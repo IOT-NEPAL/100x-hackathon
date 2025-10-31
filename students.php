@@ -191,11 +191,16 @@ if ($isLoggedIn) {
             <div class="hero-image-container-full">
                 <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920&h=1080&fit=crop" alt="Professional student" class="hero-professional-image">
                 <div class="hero-text-overlay">
-                    <h1 class="hero-main-title">
+                    <h1 class="hero-main-title" id="page-title" tabindex="-1">
                         <span class="title-line">SHOW UP</span>
                         <span class="title-line">GET HIRED</span>
                     </h1>
                 </div>
+                <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('page-title').focus();
+  });
+</script>
             </div>
         </div>
 

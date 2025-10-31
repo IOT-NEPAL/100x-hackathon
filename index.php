@@ -61,7 +61,8 @@ if ($isLoggedIn) {
         <div class="nav-container">
             <div class="nav-left">
                 <div class="nav-logo">
-                    <a href="index.php" class="hover:scale-105 transition-transform duration-300">
+                <a href="#main"> jump to main content </a>    
+                <a href="index.php" class="hover:scale-105 transition-transform duration-300">
                         <img src="logo.png" alt="Avsar Nepal" class="logo-img">
                     </a>
                 </div>
@@ -247,7 +248,7 @@ if ($isLoggedIn) {
         </div>
 
         <!-- Main Content -->
-        <div class="hero-content">
+        <div class="hero-content" id="main">
             <h1 class="hero-subtitle">Avsar Nepal</h1>
             <h2 class="hero-title">
                 Careers<br>

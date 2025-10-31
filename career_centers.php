@@ -17,9 +17,10 @@ if ($isLoggedIn) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Students - Avsar Nepal</title>
+    <title>Career Centers - Avsar Nepal</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="css/students.css">
+    <link rel="stylesheet" href="css/career_centers.css">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -61,9 +62,9 @@ if ($isLoggedIn) {
                 
                 <!-- Desktop Menu -->
                 <ul class="nav-menu hidden md:flex">
-                    <li><a href="students.php" class="text-avsar-green font-semibold">Students</a></li>
-                    <li><a href="employers.php" class="hover:text-avsar-green transition-colors duration-300" onclick="window.location.href='employers.php'">Employers</a></li>
-                    <li><a href="career_centers.php" class="hover:text-avsar-green transition-colors duration-300" onclick="window.location.href='career_centers.php'">Career centers</a></li>
+                    <li><a href="students.php" class="hover:text-avsar-green transition-colors duration-300">Students</a></li>
+                    <li><a href="employers.php" class="hover:text-avsar-green transition-colors duration-300">Employers</a></li>
+                    <li><a href="career_centers.php" class="text-avsar-green font-semibold">Career centers</a></li>
                 </ul>
             </div>
             
@@ -131,8 +132,8 @@ if ($isLoggedIn) {
                             </div>
                         </div>
                     <?php else: ?>
-                    <a href="signup.php" class="btn-signup hover:bg-gray-100 transition-colors duration-300" style="text-decoration: none; display: inline-block;">Sign up</a>
-                    <a href="login.php" class="btn-login hover:bg-avsar-green/90 transition-colors duration-300" style="text-decoration: none; display: inline-block;">Log in</a>
+                        <a href="signup.php" class="btn-signup hover:bg-gray-100 transition-colors duration-300" style="text-decoration: none; display: inline-block;">Sign up</a>
+                        <a href="login.php" class="btn-login hover:bg-avsar-green/90 transition-colors duration-300" style="text-decoration: none; display: inline-block;">Log in</a>
                     <?php endif; ?>
                 </div>
             </div>
@@ -141,9 +142,9 @@ if ($isLoggedIn) {
         <!-- Mobile Menu -->
         <div x-show="mobileMenuOpen" x-transition class="md:hidden bg-avsar-dark border-t border-gray-700">
             <div class="px-4 py-2 space-y-2">
-                <a href="students.php" class="block py-2 text-avsar-green font-semibold">Students</a>
-                <a href="employers.php" class="block py-2 text-white hover:text-avsar-green transition-colors duration-300" onclick="window.location.href='employers.php'">Employers</a>
-                <a href="career_centers.php" class="block py-2 text-white hover:text-avsar-green transition-colors duration-300" onclick="window.location.href='career_centers.php'">Career centers</a>
+                <a href="students.php" class="block py-2 text-white hover:text-avsar-green transition-colors duration-300">Students</a>
+                <a href="employers.php" class="block py-2 text-white hover:text-avsar-green transition-colors duration-300">Employers</a>
+                <a href="career_centers.php" class="block py-2 text-avsar-green font-semibold">Career centers</a>
 
                 <div class="pt-4 space-y-2">
                     <?php if ($isLoggedIn && $user): ?>
@@ -176,24 +177,24 @@ if ($isLoggedIn) {
                         <a href="profile.php" class="w-full btn-login" style="display: block; text-align: center; text-decoration: none;">Profile</a>
                         <a href="logout.php" class="w-full bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors" style="display: block; text-align: center; text-decoration: none;">Logout</a>
                     <?php else: ?>
-                    <a href="signup.php" class="w-full btn-signup" style="display: block; text-align: center; text-decoration: none;">Sign up</a>
-                    <a href="login.php" class="w-full btn-login" style="display: block; text-align: center; text-decoration: none;">Log in</a>
+                        <a href="signup.php" class="w-full btn-signup" style="display: block; text-align: center; text-decoration: none;">Sign up</a>
+                        <a href="login.php" class="w-full btn-login" style="display: block; text-align: center; text-decoration: none;">Log in</a>
                     <?php endif; ?>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Students Hero Section -->
+    <!-- Career Centers Hero Section -->
     <section class="students-hero-new">
         <div class="hero-container-new">
             <!-- Image with Text Overlay -->
             <div class="hero-image-container-full">
-                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920&h=1080&fit=crop" alt="Professional student" class="hero-professional-image">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1920&h=1080&fit=crop" alt="Career center professionals" class="hero-professional-image">
                 <div class="hero-text-overlay">
                     <h1 class="hero-main-title">
-                        <span class="title-line">SHOW UP</span>
-                        <span class="title-line">GET HIRED</span>
+                        <span class="title-line">EMPOWER</span>
+                        <span class="title-line">CONNECT</span>
                     </h1>
                 </div>
             </div>
@@ -202,10 +203,10 @@ if ($isLoggedIn) {
         <!-- Bottom Section -->
         <div class="hero-bottom-section">
             <div class="bottom-text">
-                <p>Join the network built for starting or restarting your career.</p>
+                <p>Partner with us to enhance student success and streamline career services.</p>
             </div>
             <div class="bottom-form">
-                <form class="signup-form-new" id="studentsSignupForm" x-data="{ 
+                <form class="signup-form-new" id="careerCentersForm" x-data="{ 
                     email: '', 
                     isValid: false,
                     isSubmitting: false,
@@ -217,9 +218,9 @@ if ($isLoggedIn) {
                     <input 
                         type="email" 
                         class="email-input-new" 
-                        placeholder="Type school or personal email here" 
+                        placeholder="Enter your institution email" 
                         required
-                        id="studentsEmailInput"
+                        id="careerCentersEmailInput"
                         x-model="email"
                         @input="checkEmail()"
                         :class="{ 'border-green-500': isValid, 'border-red-500': email && !isValid }"
@@ -230,7 +231,7 @@ if ($isLoggedIn) {
                         :disabled="!isValid || isSubmitting"
                         :class="{ 'opacity-50 cursor-not-allowed': !isValid || isSubmitting }"
                     >
-                        <span x-show="!isSubmitting">Sign up</span>
+                        <span x-show="!isSubmitting">Contact Us</span>
                         <span x-show="isSubmitting">...</span>
                     </button>
                 </form>
@@ -242,46 +243,45 @@ if ($isLoggedIn) {
     <section class="features-section">
         <div class="features-container">
             <h2 class="features-heading">
-                Everything you need to <span class="features-highlight">launch your career</span>
+                Everything you need to <span class="features-highlight">support your students</span>
             </h2>
             
             <div class="features-infographic">
-                <!-- Step 1: Smart Job Matching -->
+                <!-- Step 1: Student Placement -->
                 <div class="feature-step">
                     <p class="step-description">
-                        Our advanced algorithm matches you with jobs based on your skills, interests, and career goals. Get personalized job recommendations.
+                        Connect your students with top employers across Nepal. Track placement rates and student outcomes with our comprehensive analytics dashboard.
                     </p>
                     <div class="step-icon-circle step-icon-red">
                         <svg width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="2"/>
-                            <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/>
+                            <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                         </svg>
                     </div>
                 </div>
 
-                <!-- Step 2: Skill Assessments -->
+                <!-- Step 2: Event Management -->
                 <div class="feature-step">
                     <p class="step-description">
-                        Test your abilities and get certified in various skills. Showcase your expertise to employers with verified skill badges and performance reports.
+                        Organize career fairs, workshops, and networking events with ease. Manage registrations, track attendance, and measure engagement all in one platform.
                     </p>
                     <div class="step-icon-circle step-icon-teal">
                         <svg width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M9 11l3 3L22 4"/>
-                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
                         </svg>
                     </div>
                 </div>
 
-                <!-- Step 3: Career Guidance -->
+                <!-- Step 3: Employer Partnerships -->
                 <div class="feature-step">
                     <p class="step-description">
-                        Get personalized career counseling from industry experts. Receive guidance on career paths, interview preparation, and professional development.
+                        Build lasting relationships with hiring partners. Facilitate meaningful connections between employers and your student community with powerful matching tools.
                     </p>
                     <div class="step-icon-circle step-icon-yellow">
                         <svg width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10"/>
-                            <circle cx="12" cy="12" r="6"/>
-                            <circle cx="12" cy="12" r="2"/>
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                         </svg>
                     </div>
                 </div>
@@ -301,7 +301,7 @@ if ($isLoggedIn) {
     <section class="how-it-works-section">
         <div class="how-it-works-container">
             <h2 class="how-it-works-heading">
-                Your journey to success in <span class="how-it-works-highlight">5 simple steps</span>
+                Get started in <span class="how-it-works-highlight">3 simple steps</span>
             </h2>
             
             <div class="steps-layout">
@@ -310,7 +310,7 @@ if ($isLoggedIn) {
                     <div class="steps-circle-outer">
                         <div class="steps-circle-middle">
                             <div class="steps-circle-inner">
-                                <div class="steps-big-number">5</div>
+                                <div class="steps-big-number">3</div>
                                 <div class="steps-label">STEP</div>
                             </div>
                         </div>
@@ -318,7 +318,7 @@ if ($isLoggedIn) {
                     
                     <!-- Arc Path with Dots -->
                     <svg class="steps-arc-svg" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
-                        <path class="arc-path" d="M 150 50 Q 250 100, 280 200 Q 290 300, 280 350" fill="none" stroke="url(#arcGradient)" stroke-width="3"/>
+                        <path class="arc-path" d="M 150 50 Q 250 100, 280 200" fill="none" stroke="url(#arcGradient)" stroke-width="3"/>
                         <defs>
                             <linearGradient id="arcGradient" x1="0%" y1="0%" x2="0%" y2="100%">
                                 <stop offset="0%" style="stop-color:#4d9fff;stop-opacity:1" />
@@ -329,9 +329,7 @@ if ($isLoggedIn) {
                         <!-- Dots on arc -->
                         <circle class="arc-dot dot-1" cx="205" cy="88" r="8" fill="#6dd5ed"/>
                         <circle class="arc-dot dot-2" cx="260" cy="160" r="8" fill="#c44bd4"/>
-                        <circle class="arc-dot dot-3" cx="282" cy="245" r="8" fill="#d84040"/>
-                        <circle class="arc-dot dot-4" cx="280" cy="305" r="8" fill="#9bc24b"/>
-                        <circle class="arc-dot dot-5" cx="268" cy="355" r="8" fill="#2d3e87"/>
+                        <circle class="arc-dot dot-3" cx="282" cy="210" r="8" fill="#d84040"/>
                     </svg>
                 </div>
 
@@ -340,40 +338,24 @@ if ($isLoggedIn) {
                     <div class="step-pill" data-step="1">
                         <div class="pill-number pill-color-1">1</div>
                         <div class="pill-content">
-                            <h3 class="pill-title">Create Your Profile</h3>
-                            <p class="pill-text">Sign up and build your professional profile. Add your education, skills, interests, and career goals.</p>
+                            <h3 class="pill-title">Register Your Institution</h3>
+                            <p class="pill-text">Sign up and create your career center profile. Add your team members and customize your institution's page.</p>
                         </div>
                     </div>
 
                     <div class="step-pill" data-step="2">
                         <div class="pill-number pill-color-2">2</div>
                         <div class="pill-content">
-                            <h3 class="pill-title">Complete Skill Assessments</h3>
-                            <p class="pill-text">Take comprehensive skill tests to validate your abilities and earn certifications employers trust.</p>
+                            <h3 class="pill-title">Invite Your Students</h3>
+                            <p class="pill-text">Onboard students to the platform. They'll gain access to jobs, skill assessments, and career resources.</p>
                         </div>
                     </div>
 
                     <div class="step-pill" data-step="3">
                         <div class="pill-number pill-color-3">3</div>
                         <div class="pill-content">
-                            <h3 class="pill-title">Browse Jobs</h3>
-                            <p class="pill-text">Explore thousands of job postings and internships from top companies across Nepal.</p>
-                        </div>
-                    </div>
-
-                    <div class="step-pill" data-step="4">
-                        <div class="pill-number pill-color-4">4</div>
-                        <div class="pill-content">
-                            <h3 class="pill-title">Get Matched with Jobs</h3>
-                            <p class="pill-text">Our AI-powered matching system connects you with the most relevant jobs for your profile.</p>
-                        </div>
-                    </div>
-
-                    <div class="step-pill" data-step="5">
-                        <div class="pill-number pill-color-5">5</div>
-                        <div class="pill-content">
-                            <h3 class="pill-title">Apply and Succeed</h3>
-                            <p class="pill-text">Submit applications with confidence and track your progress. Get hired for your dream job!</p>
+                            <h3 class="pill-title">Connect & Track Success</h3>
+                            <p class="pill-text">Partner with employers, organize events, and monitor student outcomes with comprehensive analytics and reporting tools.</p>
                         </div>
                     </div>
                 </div>
@@ -381,141 +363,88 @@ if ($isLoggedIn) {
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials-section-new">
-        <div class="testimonials-container-new">
-            <h2 class="testimonials-heading-new">
-                For people who are <span class="testimonials-highlight">(or have been)</span> in your shoes
-            </h2>
+    <!-- Testimonials Section - Full Background Style -->
+    <section class="career-testimonials-fullbg">
+        <div class="career-testimonials-wrapper">
+            <h3 class="career-testimonials-label">Testimonials</h3>
+            
+            <!-- Testimonial Slides Container -->
+            <div class="testimonials-slides-container">
 
-            <!-- Testimonials Carousel -->
-            <div class="testimonials-carousel-new">
-                <div class="testimonials-track-new">
-                    <!-- Testimonial 1 -->
-                    <div class="testimonial-card-new">
-                        <div class="testimonial-content-new">
-                            <div class="testimonial-text-box">
-                                <blockquote class="testimonial-quote-new">
-                                    "Avsar Nepal has helped me so much beyond just finding a job... being able to track my progress, showcase my experiences, and see how others are growing... has truly helped me build confidence, gain clarity about my field, and feel more empowered in my professional journey."
-                                </blockquote>
-                                <div class="testimonial-author-new">
-                                    <div class="author-name-new">Rohit Adhikari (he/him)</div>
-                                    <div class="author-university-new">Tribhuvan University</div>
-                                    <div class="author-class-new">Class of 2024</div>
-                                </div>
-                            </div>
-                            <div class="testimonial-image-new">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop&crop=face" alt="Rohit Adhikari" class="testimonial-img-circular">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial 2 -->
-                    <div class="testimonial-card-new">
-                        <div class="testimonial-content-new">
-                            <div class="testimonial-text-box testimonial-box-orange">
-                                <blockquote class="testimonial-quote-new">
-                                    "Avsar Nepal allowed me to gain tips and tricks and connect with other students who are in the same boat. I've been able to learn a lot about resumes, career fairs, and other things that have helped me learn how to navigate college and be successful."
-                                </blockquote>
-                                <div class="testimonial-author-new">
-                                    <div class="author-name-new">Sujata Karki (she/her)</div>
-                                    <div class="author-university-new">Pokhara University</div>
-                                    <div class="author-class-new">Class of 2026</div>
-                                </div>
-                            </div>
-                            <div class="testimonial-image-new">
-                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&h=500&fit=crop&crop=face" alt="Sujata Karki" class="testimonial-img-circular">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial 3 -->
-                    <div class="testimonial-card-new">
-                        <div class="testimonial-content-new">
-                            <div class="testimonial-text-box testimonial-box-green">
-                                <blockquote class="testimonial-quote-new">
-                                    "Through Avsar Nepal, I discovered my passion for tech and secured my first internship. The mentorship and resources available helped me build projects that got me noticed by recruiters. I'm now working at my dream company!"
-                                </blockquote>
-                                <div class="testimonial-author-new">
-                                    <div class="author-name-new">Aayush Shrestha (he/him)</div>
-                                    <div class="author-university-new">Kathford International College</div>
-                                    <div class="author-class-new">Class of 2025</div>
-                                </div>
-                            </div>
-                            <div class="testimonial-image-new">
-                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&h=500&fit=crop&crop=face" alt="Aayush Shrestha" class="testimonial-img-circular">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial 4 -->
-                    <div class="testimonial-card-new">
-                        <div class="testimonial-content-new">
-                            <div class="testimonial-text-box testimonial-box-purple">
-                                <blockquote class="testimonial-quote-new">
-                                    "The networking on Avsar Nepal is incredible. I connected with alumni who gave me valuable advice and even referred me to their companies. It's more than a job board—it's a community that cares about your success."
-                                </blockquote>
-                                <div class="testimonial-author-new">
-                                    <div class="author-name-new">Nisha Khadka (she/her)</div>
-                                    <div class="author-university-new">Patan College</div>
-                                    <div class="author-class-new">Class of 2023</div>
-                                </div>
-                            </div>
-                            <div class="testimonial-image-new">
-                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500&h=500&fit=crop&crop=face" alt="Nisha Khadka" class="testimonial-img-circular">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial 5 -->
-                    <div class="testimonial-card-new">
-                        <div class="testimonial-content-new">
-                            <div class="testimonial-text-box testimonial-box-teal">
-                                <blockquote class="testimonial-quote-new">
-                                    "From workshops to real job leads, Avsar Nepal gave me clarity on where I'm headed and how to get there. The skill assessments helped me identify my strengths and the career guidance was personalized and actionable."
-                                </blockquote>
-                                <div class="testimonial-author-new">
-                                    <div class="author-name-new">Bibek Rai (he/him)</div>
-                                    <div class="author-university-new">Islington College</div>
-                                    <div class="author-class-new">Class of 2026</div>
-                                </div>
-                            </div>
-                            <div class="testimonial-image-new">
-                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&h=500&fit=crop&crop=face" alt="Bibek Rai" class="testimonial-img-circular">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial 6 -->
-                    <div class="testimonial-card-new">
-                        <div class="testimonial-content-new">
-                            <div class="testimonial-text-box testimonial-box-pink">
-                                <blockquote class="testimonial-quote-new">
-                                    "I was struggling to balance my studies and job search, but Avsar Nepal made it so much easier. The platform is intuitive, the jobs are relevant, and I found multiple internships that fit my schedule perfectly. Highly recommend!"
-                                </blockquote>
-                                <div class="testimonial-author-new">
-                                    <div class="author-name-new">Priya Tamang (she/her)</div>
-                                    <div class="author-university-new">Tribhuvan University</div>
-                                    <div class="author-class-new">Class of 2025</div>
-                                </div>
-                            </div>
-                            <div class="testimonial-image-new">
-                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&h=500&fit=crop&crop=face" alt="Priya Tamang" class="testimonial-img-circular">
-                            </div>
-                        </div>
-                    </div>
-
+            <div class="testimonial-slide-fullbg active" style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1920&h=1080&fit=crop');">
+                <div class="testimonial-overlay"></div>
+                <div class="testimonial-content-fullbg">
+                    <blockquote class="testimonial-quote-fullbg">
+                        "Our team has always worked hard to make as many industry contacts as possible, but with limited staff and time, we could only do so much. Avsar Nepal's employer network meant our students suddenly had direct access to jobs that weren't even on our radar."
+                    </blockquote>
+                    <cite class="testimonial-author-fullbg">
+                        <span class="author-name-fullbg">Christian Garcia,</span>
+                        <span class="author-institution-fullbg">University of Miami</span>
+                    </cite>
                 </div>
             </div>
 
+            <div class="testimonial-slide-fullbg" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1920&h=1080&fit=crop');">
+                <div class="testimonial-overlay"></div>
+                <div class="testimonial-content-fullbg">
+                    <blockquote class="testimonial-quote-fullbg">
+                        "We're grateful to Avsar Nepal for providing our students with equal access to jobs, events, and employers who typically recruit at four-year institutions. The platform has leveled the playing field for community college students."
+                    </blockquote>
+                    <cite class="testimonial-author-fullbg">
+                        <span class="author-name-fullbg">Amy Crawford,</span>
+                        <span class="author-institution-fullbg">Howard Community College</span>
+                    </cite>
+                </div>
+            </div>
+
+            <div class="testimonial-slide-fullbg" style="background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1920&h=1080&fit=crop');">
+                <div class="testimonial-overlay"></div>
+                <div class="testimonial-content-fullbg">
+                    <blockquote class="testimonial-quote-fullbg">
+                        "Avsar Nepal has been a game-changer for our university... helping us to achieve our goals of providing a cutting-edge, secure, and accessible online experience for all members of our community. The analytics dashboard gives us real-time insights into student engagement."
+                    </blockquote>
+                    <cite class="testimonial-author-fullbg">
+                        <span class="author-name-fullbg">Lamark Shaw,</span>
+                        <span class="author-institution-fullbg">Daemen College</span>
+                    </cite>
+                </div>
+            </div>
+
+            <div class="testimonial-slide-fullbg" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920&h=1080&fit=crop');">
+                <div class="testimonial-overlay"></div>
+                <div class="testimonial-content-fullbg">
+                    <blockquote class="testimonial-quote-fullbg">
+                        "The platform's employer partnerships have opened doors for our students that we never thought possible. We've seen a 45% increase in placement rates since partnering with Avsar Nepal. The integration with our existing systems was seamless."
+                    </blockquote>
+                    <cite class="testimonial-author-fullbg">
+                        <span class="author-name-fullbg">Dr. Sarah Mitchell,</span>
+                        <span class="author-institution-fullbg">Boston College</span>
+                    </cite>
+                </div>
+            </div>
+
+            <div class="testimonial-slide-fullbg" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1920&h=1080&fit=crop');">
+                <div class="testimonial-overlay"></div>
+                <div class="testimonial-content-fullbg">
+                    <blockquote class="testimonial-quote-fullbg">
+                        "What sets Avsar Nepal apart is their genuine commitment to student success. They've helped us modernize our career services and engage students in ways we never imagined. Our career fair attendance increased by 200% this year."
+                    </blockquote>
+                    <cite class="testimonial-author-fullbg">
+                        <span class="author-name-fullbg">James Rodriguez,</span>
+                        <span class="author-institution-fullbg">Stanford University</span>
+                    </cite>
+                </div>
+            </div>
+            </div>
+
             <!-- Navigation Arrows -->
-            <div class="testimonials-navigation-new">
-                <button class="testimonial-arrow-new testimonial-prev-new" id="testiPrevNew" aria-label="Previous testimonial">
+            <div class="testimonial-nav-fullbg">
+                <button class="testimonial-arrow-fullbg testimonial-prev-fullbg" id="careerTestiPrev" aria-label="Previous testimonial">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                         <path d="M15 18l-6-6 6-6"/>
                     </svg>
                 </button>
-                <button class="testimonial-arrow-new testimonial-next-new" id="testiNextNew" aria-label="Next testimonial">
+                <button class="testimonial-arrow-fullbg testimonial-next-fullbg" id="careerTestiNext" aria-label="Next testimonial">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                         <path d="M9 18l6-6-6-6"/>
                     </svg>
@@ -558,12 +487,12 @@ if ($isLoggedIn) {
                 </div>
 
                 <div class="footer-column">
-                    <h4 class="footer-heading">Company</h4>
+                    <h4 class="footer-heading">Career Centers</h4>
                     <ul class="footer-links">
-                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#partnership">Partnership</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#support">Support</a></li>
                         <li><a href="#contact">Contact</a></li>
-                        <li><a href="#blog">Blog</a></li>
-                        <li><a href="#careers">Careers</a></li>
                     </ul>
                 </div>
 
@@ -595,14 +524,13 @@ if ($isLoggedIn) {
     </footer>
 
     <script src="script.js"></script>
-    <script src="students.js"></script>
     
-    <!-- GSAP Animations for Students Page -->
+    <!-- GSAP Animations for Career Centers Page -->
     <script>
         // GSAP Animations
         gsap.registerPlugin(ScrollTrigger);
 
-        // Animate hero image container
+        // Animate hero section
         gsap.from(".hero-image-container-full", {
             duration: 1,
             scale: 0.95,
@@ -611,7 +539,6 @@ if ($isLoggedIn) {
             delay: 0.3
         });
 
-        // Animate hero title
         gsap.from(".hero-main-title .title-line", {
             duration: 1.2,
             y: 50,
@@ -621,7 +548,6 @@ if ($isLoggedIn) {
             delay: 0.8
         });
 
-        // Animate bottom section
         gsap.from(".bottom-text", {
             duration: 0.8,
             y: 30,
@@ -650,20 +576,6 @@ if ($isLoggedIn) {
             ease: "power2.out"
         });
 
-        // Animate dotted line
-        gsap.from(".features-infographic::before", {
-            scrollTrigger: {
-                trigger: ".features-infographic",
-                start: "top 80%",
-                once: true
-            },
-            duration: 1.5,
-            scaleX: 0,
-            ease: "power2.out",
-            delay: 0.3
-        });
-
-        // Animate feature steps
         gsap.utils.toArray(".feature-step").forEach((step, i) => {
             gsap.from(step.querySelector('.step-description'), {
                 scrollTrigger: { 
@@ -692,7 +604,6 @@ if ($isLoggedIn) {
             });
         });
 
-        // Animate paper airplane
         gsap.from(".paper-airplane", {
             scrollTrigger: {
                 trigger: ".features-infographic",
@@ -720,7 +631,6 @@ if ($isLoggedIn) {
             ease: "power2.out"
         });
 
-        // Animate circular visual
         gsap.from(".steps-circle-outer", {
             scrollTrigger: {
                 trigger: ".how-it-works-section",
@@ -734,7 +644,6 @@ if ($isLoggedIn) {
             delay: 0.3
         });
 
-        // Animate step pills
         gsap.utils.toArray(".step-pill").forEach((pill, i) => {
             gsap.from(pill.querySelector('.pill-number'), {
                 scrollTrigger: { 
@@ -765,9 +674,9 @@ if ($isLoggedIn) {
         });
 
         // Testimonials section animations
-        gsap.from(".testimonials-heading-new", {
+        gsap.from(".career-testimonials-label", {
             scrollTrigger: {
-                trigger: ".testimonials-section-new",
+                trigger: ".career-testimonials-fullbg",
                 start: "top 80%"
             },
             duration: 1,
@@ -776,36 +685,22 @@ if ($isLoggedIn) {
             ease: "power2.out"
         });
 
-        gsap.utils.toArray(".testimonial-card-new").forEach((card, i) => {
-            gsap.from(card.querySelector('.testimonial-text-box'), {
-                scrollTrigger: { 
-                    trigger: card, 
-                    start: 'top 80%',
-                    once: true
-                },
-                duration: 1,
-                x: -100,
-                opacity: 0,
-                ease: "power2.out"
-            });
-
-            gsap.from(card.querySelector('.testimonial-image-new'), {
-                scrollTrigger: { 
-                    trigger: card, 
-                    start: 'top 80%',
-                    once: true
-                },
-                duration: 1,
-                scale: 0.8,
-                opacity: 0,
-                ease: "back.out(1.2)",
-                delay: 0.2
-            });
+        gsap.from(".testimonial-slide-fullbg.active .testimonial-content-fullbg", {
+            scrollTrigger: {
+                trigger: ".career-testimonials-fullbg",
+                start: "top 70%",
+                once: true
+            },
+            duration: 1.2,
+            y: 60,
+            opacity: 0,
+            ease: "power2.out",
+            delay: 0.3
         });
 
-        gsap.from(".testimonials-navigation-new", {
+        gsap.from(".testimonial-nav-fullbg", {
             scrollTrigger: {
-                trigger: ".testimonials-section-new",
+                trigger: ".career-testimonials-fullbg",
                 start: "top 80%"
             },
             duration: 0.8,
@@ -815,44 +710,124 @@ if ($isLoggedIn) {
             delay: 0.6
         });
 
-        // Testimonials carousel functionality
-        const carouselNew = document.querySelector('.testimonials-carousel-new');
-        const btnPrevNew = document.getElementById('testiPrevNew');
-        const btnNextNew = document.getElementById('testiNextNew');
-        
-        if (carouselNew && btnPrevNew && btnNextNew) {
-            const slideWidth = () => carouselNew.clientWidth;
-            
-            btnPrevNew.addEventListener('click', () => {
-                carouselNew.scrollBy({ 
-                    left: -slideWidth(), 
-                    behavior: 'smooth' 
-                });
-            });
-            
-            btnNextNew.addEventListener('click', () => {
-                carouselNew.scrollBy({ 
-                    left: slideWidth(), 
-                    behavior: 'smooth' 
-                });
-            });
+        // Footer animations
+        gsap.from(".footer-column", {
+            scrollTrigger: {
+                trigger: ".footer",
+                start: "top 90%",
+                once: true
+            },
+            duration: 0.8,
+            y: 40,
+            opacity: 0,
+            stagger: 0.1,
+            ease: "power2.out"
+        });
 
-            // Optional: Add keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') {
-                    carouselNew.scrollBy({ 
-                        left: -slideWidth(), 
-                        behavior: 'smooth' 
-                    });
-                } else if (e.key === 'ArrowRight') {
-                    carouselNew.scrollBy({ 
-                        left: slideWidth(), 
-                        behavior: 'smooth' 
-                    });
+        // Add smooth hover effects to buttons
+        document.querySelectorAll('.btn-signup-new, .btn-login, .btn-signup').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                gsap.to(this, {
+                    scale: 1.05,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                gsap.to(this, {
+                    scale: 1,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+        });
+
+        // Smooth scroll reveal for footer logo
+        gsap.from(".footer-logo", {
+            scrollTrigger: {
+                trigger: ".footer",
+                start: "top 90%",
+                once: true
+            },
+            duration: 1,
+            x: -30,
+            opacity: 0,
+            ease: "power2.out"
+        });
+
+        // Animate social icons
+        gsap.from(".social-icon", {
+            scrollTrigger: {
+                trigger: ".footer",
+                start: "top 90%",
+                once: true
+            },
+            duration: 0.6,
+            scale: 0,
+            opacity: 0,
+            stagger: 0.1,
+            ease: "back.out(1.7)",
+            delay: 0.5
+        });
+
+        // Add parallax effect to hero image
+        gsap.to(".hero-professional-image", {
+            scrollTrigger: {
+                trigger: ".students-hero-new",
+                start: "top top",
+                end: "bottom top",
+                scrub: 1
+            },
+            y: 100,
+            ease: "none"
+        });
+    </script>
+    
+    <!-- Testimonials Carousel Functionality -->
+    <script>
+        let currentTestimonial = 0;
+        const testimonialSlides = document.querySelectorAll('.testimonial-slide-fullbg');
+        const totalTestimonials = testimonialSlides.length;
+        const btnPrev = document.getElementById('careerTestiPrev');
+        const btnNext = document.getElementById('careerTestiNext');
+
+        function showTestimonial(index) {
+            testimonialSlides.forEach((slide, i) => {
+                if (i === index) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
                 }
             });
         }
 
+        function nextTestimonial() {
+            currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
+            showTestimonial(currentTestimonial);
+        }
+
+        function prevTestimonial() {
+            currentTestimonial = (currentTestimonial - 1 + totalTestimonials) % totalTestimonials;
+            showTestimonial(currentTestimonial);
+        }
+
+        if (btnPrev && btnNext) {
+            btnPrev.addEventListener('click', prevTestimonial);
+            btnNext.addEventListener('click', nextTestimonial);
+
+            // Auto-advance every 6 seconds
+            setInterval(nextTestimonial, 6000);
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') prevTestimonial();
+                if (e.key === 'ArrowRight') nextTestimonial();
+            });
+        }
+
+        // Initialize first slide
+        showTestimonial(0);
     </script>
 </body>
 </html>
