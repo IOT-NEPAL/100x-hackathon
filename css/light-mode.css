@@ -1,0 +1,546 @@
+/* ============================================
+   LIGHT MODE THEME - PROFESSIONAL DESIGN
+   ============================================ */
+
+body.light-mode {
+    --primary-color: #2563eb;
+    --secondary-color: #64748b;
+    --success-color: #10b981;
+    --info-color: #06b6d4;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+    --light-color: #f8fafc;
+    --dark-color: #1e293b;
+    
+    /* Light Mode Specific Colors */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-tertiary: #f1f5f9;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ============================================
+   NAVBAR - LIGHT MODE
+   ============================================ */
+body.light-mode .navbar {
+    background: #ffffff !important;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+body.light-mode .navbar-brand,
+body.light-mode .nav-link {
+    color: var(--text-primary) !important;
+}
+
+body.light-mode .nav-link:hover {
+    color: var(--primary-color) !important;
+    background: var(--bg-tertiary) !important;
+}
+
+body.light-mode .navbar-toggler {
+    border-color: var(--border-color);
+}
+
+body.light-mode .navbar-toggler-icon {
+    filter: invert(1);
+}
+
+body.light-mode .theme-toggle {
+    color: var(--text-primary) !important;
+}
+
+body.light-mode .theme-toggle:hover {
+    color: var(--primary-color) !important;
+    background: var(--bg-tertiary) !important;
+}
+
+/* Dropdown Menu */
+body.light-mode .dropdown-menu {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+}
+
+body.light-mode .dropdown-item {
+    color: var(--text-primary);
+}
+
+body.light-mode .dropdown-item:hover {
+    background: var(--bg-tertiary);
+    color: var(--primary-color);
+}
+
+body.light-mode .dropdown-divider {
+    border-color: var(--border-color);
+}
+
+/* Badge Notification */
+body.light-mode .badge.bg-danger {
+    background-color: #ef4444 !important;
+    color: #ffffff !important;
+}
+
+/* ============================================
+   MAIN CONTENT - LIGHT MODE
+   ============================================ */
+body.light-mode .main-content {
+    background: var(--bg-secondary);
+}
+
+body.light-mode .container {
+    background: transparent;
+}
+
+/* ============================================
+   CARDS - LIGHT MODE
+   ============================================ */
+body.light-mode .card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    color: var(--text-primary);
+}
+
+body.light-mode .card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+body.light-mode .card-header {
+    background: var(--bg-tertiary) !important;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary) !important;
+}
+
+body.light-mode .card-body {
+    background: #ffffff;
+}
+
+body.light-mode .card-footer {
+    background: var(--bg-tertiary);
+    border-top: 1px solid var(--border-color);
+}
+
+/* Stats Cards */
+body.light-mode .stats-card {
+    background: #ffffff !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+
+body.light-mode .stats-card.bg-primary {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+    color: #ffffff !important;
+}
+
+body.light-mode .stats-card.bg-warning {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%) !important;
+    color: #ffffff !important;
+}
+
+body.light-mode .stats-card.bg-success {
+    background: linear-gradient(135deg, #34d399 0%, #10b981 100%) !important;
+    color: #ffffff !important;
+}
+
+body.light-mode .stats-card.bg-info {
+    background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%) !important;
+    color: #ffffff !important;
+}
+
+/* ============================================
+   BUTTONS - LIGHT MODE
+   ============================================ */
+body.light-mode .btn-primary {
+    background: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: #ffffff !important;
+}
+
+body.light-mode .btn-primary:hover {
+    background: #1d4ed8 !important;
+    border-color: #1d4ed8 !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+body.light-mode .btn-outline-primary {
+    border-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
+}
+
+body.light-mode .btn-outline-primary:hover {
+    background: var(--primary-color) !important;
+    color: #ffffff !important;
+}
+
+body.light-mode .btn-secondary {
+    background: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+    color: #ffffff !important;
+}
+
+body.light-mode .btn-outline-secondary {
+    border-color: var(--secondary-color) !important;
+    color: var(--secondary-color) !important;
+}
+
+body.light-mode .btn-outline-secondary:hover {
+    background: var(--secondary-color) !important;
+    color: #ffffff !important;
+}
+
+/* ============================================
+   FORMS - LIGHT MODE
+   ============================================ */
+body.light-mode .form-control,
+body.light-mode .form-select {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+body.light-mode .form-control:focus,
+body.light-mode .form-select:focus {
+    background: #ffffff;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+    color: var(--text-primary);
+}
+
+body.light-mode .form-label {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+body.light-mode .form-text {
+    color: var(--text-secondary);
+}
+
+/* ============================================
+   TABLES - LIGHT MODE
+   ============================================ */
+body.light-mode .table {
+    background: #ffffff;
+    color: var(--text-primary);
+}
+
+body.light-mode .table thead th {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border-color);
+    font-weight: 600;
+}
+
+body.light-mode .table tbody tr {
+    border-bottom: 1px solid var(--border-color);
+}
+
+body.light-mode .table tbody tr:hover {
+    background: var(--bg-secondary);
+}
+
+body.light-mode .table-responsive {
+    border: 1px solid var(--border-color);
+}
+
+/* ============================================
+   BADGES - LIGHT MODE
+   ============================================ */
+body.light-mode .badge {
+    font-weight: 500;
+}
+
+body.light-mode .badge.bg-primary {
+    background-color: var(--primary-color) !important;
+    color: #ffffff;
+}
+
+body.light-mode .badge.bg-success {
+    background-color: var(--success-color) !important;
+    color: #ffffff;
+}
+
+body.light-mode .badge.bg-warning {
+    background-color: var(--warning-color) !important;
+    color: #ffffff;
+}
+
+body.light-mode .badge.bg-danger {
+    background-color: var(--danger-color) !important;
+    color: #ffffff;
+}
+
+body.light-mode .badge.bg-info {
+    background-color: var(--info-color) !important;
+    color: #ffffff;
+}
+
+body.light-mode .badge.bg-secondary {
+    background-color: var(--secondary-color) !important;
+    color: #ffffff;
+}
+
+/* ============================================
+   ALERTS - LIGHT MODE
+   ============================================ */
+body.light-mode .alert {
+    border: 1px solid var(--border-color);
+}
+
+body.light-mode .alert-success {
+    background: #d1fae5;
+    border-color: #6ee7b7;
+    color: #065f46;
+}
+
+body.light-mode .alert-info {
+    background: #cffafe;
+    border-color: #67e8f9;
+    color: #0e7490;
+}
+
+body.light-mode .alert-warning {
+    background: #fef3c7;
+    border-color: #fcd34d;
+    color: #92400e;
+}
+
+body.light-mode .alert-danger {
+    background: #fee2e2;
+    border-color: #fca5a5;
+    color: #991b1b;
+}
+
+/* ============================================
+   BREADCRUMBS - LIGHT MODE
+   ============================================ */
+body.light-mode .breadcrumb {
+    background: var(--bg-tertiary);
+}
+
+body.light-mode .breadcrumb-item a {
+    color: var(--primary-color);
+}
+
+body.light-mode .breadcrumb-item.active {
+    color: var(--text-secondary);
+}
+
+/* ============================================
+   PAGINATION - LIGHT MODE
+   ============================================ */
+body.light-mode .pagination .page-link {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    color: var(--primary-color);
+}
+
+body.light-mode .pagination .page-link:hover {
+    background: var(--bg-tertiary);
+    color: var(--primary-color);
+}
+
+body.light-mode .pagination .page-item.active .page-link {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #ffffff;
+}
+
+body.light-mode .pagination .page-item.disabled .page-link {
+    background: var(--bg-tertiary);
+    color: var(--text-muted);
+}
+
+/* ============================================
+   WELCOME BANNER - LIGHT MODE
+   ============================================ */
+body.light-mode .welcome-banner {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    border: 1px solid var(--border-color);
+    color: #ffffff;
+}
+
+body.light-mode .welcome-banner h1,
+body.light-mode .welcome-banner p {
+    color: #ffffff;
+}
+
+/* ============================================
+   EMPTY STATE - LIGHT MODE
+   ============================================ */
+body.light-mode .empty-state {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+}
+
+body.light-mode .empty-state i {
+    color: var(--text-muted);
+}
+
+/* ============================================
+   FOOTER - LIGHT MODE
+   ============================================ */
+body.light-mode .footer {
+    background: #1e293b !important;
+    border-top: 1px solid #334155;
+    color: #e2e8f0;
+}
+
+body.light-mode .footer-brand,
+body.light-mode .footer-heading {
+    color: #ffffff;
+}
+
+body.light-mode .footer-tagline {
+    color: #cbd5e1;
+}
+
+body.light-mode .footer-links a {
+    color: #cbd5e1;
+}
+
+body.light-mode .footer-links a:hover {
+    color: #3b82f6;
+}
+
+body.light-mode .footer-legal p {
+    color: #94a3b8;
+}
+
+body.light-mode .legal-links a {
+    color: #94a3b8;
+}
+
+body.light-mode .legal-links a:hover {
+    color: #3b82f6;
+}
+
+/* ============================================
+   TEXT COLORS - LIGHT MODE
+   ============================================ */
+body.light-mode .text-muted {
+    color: var(--text-secondary) !important;
+}
+
+body.light-mode .text-primary {
+    color: var(--primary-color) !important;
+}
+
+body.light-mode h1, body.light-mode h2, 
+body.light-mode h3, body.light-mode h4, 
+body.light-mode h5, body.light-mode h6 {
+    color: var(--text-primary);
+}
+
+body.light-mode .lead {
+    color: var(--text-secondary);
+}
+
+body.light-mode a {
+    color: var(--primary-color);
+}
+
+body.light-mode a:hover {
+    color: #1d4ed8;
+}
+
+/* ============================================
+   OPPORTUNITIES CARD - LIGHT MODE
+   ============================================ */
+body.light-mode .opportunity-card {
+    transition: all 0.3s ease;
+}
+
+body.light-mode .opportunity-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ============================================
+   SKILL TAGS - LIGHT MODE
+   ============================================ */
+body.light-mode .skill-tag {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+body.light-mode .skill-tag:hover {
+    background: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+}
+
+/* ============================================
+   MODALS - LIGHT MODE
+   ============================================ */
+body.light-mode .modal-content {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+}
+
+body.light-mode .modal-header {
+    background: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+body.light-mode .modal-footer {
+    background: var(--bg-tertiary);
+    border-top: 1px solid var(--border-color);
+}
+
+body.light-mode .modal-title {
+    color: var(--text-primary);
+}
+
+/* ============================================
+   LOADING & TRANSITIONS
+   ============================================ */
+body.light-mode * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 768px) {
+    body.light-mode .card {
+        box-shadow: var(--shadow-sm);
+    }
+    
+    body.light-mode .stats-card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* ============================================
+   SCROLLBAR - LIGHT MODE
+   ============================================ */
+body.light-mode::-webkit-scrollbar {
+    width: 12px;
+}
+
+body.light-mode::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+}
+
+body.light-mode::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 6px;
+}
+
+body.light-mode::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
