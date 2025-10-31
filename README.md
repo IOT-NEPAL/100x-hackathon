@@ -1,6 +1,6 @@
-# Inclusify - Accessible Opportunity Platform
+# avsar nepal- opportunity platform for job providers and job seekers.
 
-**A production-ready hackathon project connecting differently-abled individuals with opportunities.**
+**A production-ready hackathon project connecting job seekers with top notch job opportunities.**
 
 Avsar Nepal is a comprehensive web platform designed to connect students and fresh graduates in Nepal with employment opportunities and internships, helping them gain relevant experience and launch their careers.
 
@@ -38,18 +38,18 @@ Avsar Nepal is a comprehensive web platform designed to connect students and fre
 - **Activity logs**: Comprehensive audit trail
 
 ### 🎨 Modern UI/UX
-- **Bootstrap 5**: Responsive, mobile-first design
+- **talewind css **: Responsive, mobile-first design
 - **Custom styling**: Professional appearance with accessibility considerations
 - **Interactive elements**: Modals, tooltips, toast notifications
 - **Chart visualization**: Application and opportunity statistics
 
 ## 🛠️ Technology Stack
 
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+), Bootstrap 5
+- **Frontend**: HTML5, CSS3, JavaScript (ES6+), talewind css
 - **Backend**: PHP 8.0+
 - **Database**: MySQL 8.0+
 - **Server**: Apache (XAMPP)
-- **Libraries**: Chart.js, Font Awesome, Web Speech API
+- **Libraries**: Chart.js, Font Awesome
 
 ## 📁 Project Structure
 
@@ -72,8 +72,9 @@ inclusify/
 ├── css/                        # Stylesheets
 │   └── custom.css             # Custom styles and accessibility features
 ├── js/                         # JavaScript files
-│   ├── accessibility.js       # Accessibility features
+
 │   └── main.js                # Main application logic
+│   └── chatbot.js # for chatbot actions
 ├── images/                     # Static images and assets
 │   └── logo.png               # Inclusify logo
 ├── uploads/                    # File upload directories
@@ -192,11 +193,6 @@ Restart Apache after making changes.
 
 The accessibility features are automatically enabled. Users can:
 
-- **Toggle High Contrast**: `Alt + C` or click the contrast button
-- **Increase Font Size**: `Alt + Plus` or click the plus button
-- **Decrease Font Size**: `Alt + Minus` or click the minus button
-- **Text-to-Speech**: `Alt + S` or click the speaker button
-- **Stop Speech**: `Escape` key
 
 ### Customization
 
@@ -264,9 +260,6 @@ VALUES ('New Organization', 'new@example.com', '+1-555-0000',
    - [ ] Role-based redirects
 
 2. **Accessibility**
-   - [ ] High contrast mode
-   - [ ] Font size adjustments
-   - [ ] Text-to-speech functionality
    - [ ] Keyboard navigation
    - [ ] Screen reader compatibility
 
@@ -311,17 +304,6 @@ Test in major browsers:
    - Implement connection pooling
    - Regular backup procedures
 
-### Docker Deployment (Optional)
-
-Create a `Dockerfile`:
-
-```dockerfile
-FROM php:8.1-apache
-RUN docker-php-ext-install pdo pdo_mysql
-COPY inclusify/ /var/www/html/
-RUN chown -R www-data:www-data /var/www/html
-EXPOSE 80
-```
 
 ## 🤝 Contributing
 
@@ -345,18 +327,6 @@ EXPOSE 80
    - Implement CSRF protection
    - Regular security audits
 
-### Feature Extensions
-
-Easy areas to extend:
-
-1. **Email Notifications**: Add SMTP configuration
-2. **Social Login**: Integrate OAuth providers
-3. **Advanced Search**: Add more filter options
-4. **Real-time Chat**: Add messaging between users and orgs
-5. **Calendar Integration**: Schedule interviews and events
-6. **Document Verification**: Verify organization credentials
-7. **API Development**: Create REST API for mobile apps
-
 ## 📞 Support
 
 For support or questions:
@@ -368,7 +338,7 @@ For support or questions:
 
 ## 📄 License
 
-This project is created for hackathon purposes and educational use. Feel free to modify and extend as needed.
+This project is soully created for hackathon purpose. All rights goes to team elite. The main hackathon organizer, 100 X Nepal can use it for marketing and demonstration purposes.
 
 ## 🏆 Hackathon Ready
 
@@ -378,24 +348,11 @@ This project is designed to be impressive in hackathon settings:
 - **Professional Design**: Modern, accessible UI
 - **Real Data**: Sample users, opportunities, and applications
 - **Live Demo Ready**: Works immediately after setup
-- **Scalable Architecture**: Easy to extend and modify
-- **Accessibility Focus**: Demonstrates social impact and inclusivity
+- **Scalable Architecture**: Easy to ex: Advanced reporting and insights
 
-## 📈 Future Enhancements
-
-Consider these features for future development:
-
-1. **Mobile App**: React Native or Flutter companion
-2. **AI Matching**: ML-based opportunity recommendations
-3. **Video Interviews**: Integrated video calling
-4. **Skills Assessment**: Built-in testing platform
-5. **Mentorship Program**: Connect users with mentors
-6. **Company Verification**: Advanced organization validation
-7. **Analytics Dashboard**: Advanced reporting and insights
-8. **Multi-language**: Internationalization support
 
 ---
 
-**Built with ❤️ for accessibility and inclusion**
+**Built with for accessibility and inclusion**
 
-*Last updated: December 2024*
+*Last updated: october 31st, 2025*
