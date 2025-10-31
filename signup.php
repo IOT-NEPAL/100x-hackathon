@@ -398,7 +398,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Signup Form -->
     <div class="auth-container">
         <div class="auth-card">
-            <h1 class="auth-title">Create Account</h1>
+            <h1 tabindex="-1" class="auth-title" id="page-title">Create Account</h1>
+            <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('page-title').focus();
+  });
+</script>
             <p class="auth-subtitle">Connect with jobs tailored for students and fresh graduates in Nepal</p>
                     
             <?php if ($error): ?>
