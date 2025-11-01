@@ -1,285 +1,133 @@
-# Avsar Nepal: Opportunity Platform
+# Avsar Nepal: Opportunity Platform  
+### Bridging Nepal's Emerging Talent with Tomorrow's Opportunities
 
-**A production-ready platform connecting Nepal's fresh talent with top-notch job opportunities.**
+Avsar Nepal is a dynamic web platform designed to solve a critical challenge in Nepal's job market: connecting students and fresh graduates with the valuable work experience they need to launch their careers. We provide a standard job board for everyone and a premium, verification-based service for companies seeking the best, pre-vetted candidates.
 
-Avsar Nepal is a comprehensive web platform designed to bridge the gap between students and fresh graduates in Nepal and employment opportunities, helping them gain relevant experience and launch their careers.
+---
 
-This platform serves as a standard job board for all users and offers a **premium, verification-based service** for companies seeking the best, pre-vetted candidates.
+## 🌟 What We Offer
 
-## 🌟 Core Features
+### For Job Seekers: Launch Your Career  
+Your journey starts here. After a quick login, you can build a verified profile that stands out to employers.
 
-### 🔐 Authentication & User Management
+**Build & Verify Your Profile:** Showcase your skills, education, and projects. Get your profile verified by our team to build credibility and unlock access to premium opportunities.
 
-  - **Multi-role system**: **Job Seekers** (freshers/students), **Employers** (Standard and Premium), and **Admins**
-  - **Secure authentication**: Password hashing, session management, CSRF protection
-  - **Role-based access control**: Different dashboards and permissions per role
-  - **Profile management**: Complete user profiles with skills, experience, and preferences
+**Discover Your Perfect Role:** Browse a wide array of full-time jobs, part-time gigs, and internships. Use our powerful search and filters, or simply chat with our AI-powered chatbot to find roles that match your unique skills and ambitions.
 
-### 🎯 Opportunities Management (Standard Platform)
+**Streamlined Applications:** Apply to opportunities with ease. Your profile information auto-fills applications, and you can track your status every step of the way.
 
-  - **Job Posting Management**: Employers can create, read, update, and delete opportunities.
-  - **Multiple types**: Full-time jobs, part-time jobs, and internships.
-  - **Advanced search**: Job seekers can filter by type, location, and keywords.
-  - **Detailed views**: Comprehensive opportunity information with attachments.
+---
 
-### 📋 Application System (Standard Platform)
+### For Employers: Find Verified Talent  
+**Standard Job Board:** Post opportunities, manage applications, and connect with a broad pool of talent directly through your dashboard.
 
-  - **Easy application process**: Pre-filled user information, cover letters, resume uploads.
-  - **Application tracking**: Status updates (applied, under review, accepted, rejected).
-  - **Employer Dashboard**: Employers can review and manage incoming applications directly.
+**🌟 Premium Talent Service (Our Flagship Offering):** Subscribe to our premium service and let us do the heavy lifting. Our expert HR team conducts rigorous verifications and initial screenings of job seekers, providing you with a curated shortlist of the best, interview-ready candidates tailored to your specific needs.
 
-### 💼 Premium Employer Services (Premium Feature)
+---
 
-This is our premium offering for companies and businesses. When an employer subscribes to this feature, Avsar Nepal handles the initial screening.
+### For Everyone: An Inclusive Experience  
+We are committed to accessibility for all users, featuring:
 
-  - **Candidate Verification**: Our internal HR team, with expertise across diverse fields, conducts a rigorous verification and interview process for interested job seekers.
-  - **Curated Talent Pool**: Premium companies get access to a pre-vetted list of the "best candidates" whose skills, experience, and professionalism have been validated by our team.
-  - **Direct Matching**: We provide companies with candidates who are the best fit for their specific roles, saving them time and resources in the hiring process.
+- Screen reader navigation support  
+- Full keyboard navigation  
 
-### ♿ Accessibility Features
+---
 
-  - **High contrast mode**: Toggle for better visibility
-  - **Font size controls**: Adjustable text size
-  - **Text-to-speech**: Read page content and opportunities aloud
-  - **Keyboard navigation**: Full keyboard accessibility support
-  - **Screen reader compatible**: Semantic HTML and ARIA labels
+## 🛠 Technology Stack
 
-### 📊 Analytics & Reporting
+- **Frontend:** HTML5, CSS3, JavaScript (ES6+), Tailwind CSS  
+- **Backend:** PHP 8.0+  
+- **Database:** MySQL 8.0+  
+- **Server:** Apache (via XAMPP)  
+- **Libraries:** Chart.js, Font Awesome  
 
-  - **Admin dashboard**: System-wide statistics and user management
-  - **Employer insights**: Track opportunity performance and application metrics
-  - **User tracking**: Application history and status tracking
-  - **Activity logs**: Comprehensive audit trail
-
-### 🎨 Modern UI/UX
-
-  - **Tailwind CSS**: Responsive, mobile-first design
-  - **Custom styling**: Professional appearance with accessibility considerations
-  - **Interactive elements**: Modals, tooltips, toast notifications
-  - **Chart visualization**: Application and opportunity statistics
-
------
-
-## 🛠️ Technology Stack
-
-  - **Frontend**: HTML5, CSS3, JavaScript (ES6+), **Tailwind CSS**
-  - **Backend**: PHP 8.0+
-  - **Database**: MySQL 8.0+
-  - **Server**: Apache (XAMPP)
-  - **Libraries**: Chart.js, Font Awesome
-
------
+---
 
 ## 📁 Project Structure
-
-```
 avsar-nepal/
-├── admin/                 # Admin dashboard and management
-│   ├── admin-dashboard.php    # Main admin dashboard
-│   └── [other admin files]  # User, opportunity, and system management
-├── employer/              # Employer dashboard and tools
-│   ├── employer-dashboard.php # Main employer dashboard
-│   └── [other org files]    # Opportunity management, applications
-├── user/                  # User (Job Seeker) dashboard
-│   ├── user-dashboard.php     # Main user dashboard
-│   └── [other user files]   # Applications, profile management
-├── includes/              # Core system files
-│   ├── auth.php             # Authentication functions
-│   ├── db.php               # Database connection
-│   ├── header.php           # Common header template
-│   └── footer.php           # Common footer template
-├── css/                   # Stylesheets
-│   └── custom.css           # Custom styles
-├── js/                    # JavaScript files
-│   ├── main.js              # Main application logic
-│   └── chatbot.js           # Chatbot actions
-├── images/                # Static images and assets
-│   └── logo.png             # Avsar Nepal logo
-├── uploads/               # File upload directories
-│   ├── profile_pics/        # User profile pictures
-│   ├── resumes/             # Resume uploads
-│   └── opportunity_files/   # Opportunity attachments
-├── index.php              # Landing page
-├── login.php              # Login form
-├── signup.php             # Registration form
-├── opportunities.php      # Opportunity listings
-├── view-opportunity.php   # Opportunity details
-├── apply.php              # Application form
-├── profile.php            # Profile management
-├── avsar_nepal.sql        # Database schema and sample data
-└── README.md              # This file
-```
+├── admin/ # Admin dashboard for system management
+├── employer/ # Employer dashboard and tools
+├── user/ # Job Seeker dashboard (profile, applications)
+├── includes/ # Core system files (auth, database, headers)
+├── css/ # Stylesheets and custom designs
+├── js/ # JavaScript logic (including chatbot)
+├── images/ # Logos and static assets
+├── uploads/ # Directories for resumes, profile pictures, etc.
+├── index.php # Public landing page
+├── login.php # User authentication
+├── opportunities.php # Main job listing page
+├── avsar_nepal.sql # Database schema
+└── README.md # You are here!
 
------
+---
 
-## 🚀 Setup Instructions
+## 🚀 Getting Started
 
-### Prerequisites
+### Prerequisites  
+- **XAMPP:** Ensure you have XAMPP installed and running on your machine.
 
-1.  **XAMPP** (or LAMP/WAMP) with:
-      - Apache 2.4+
-      - PHP 8.0+
-      - MySQL 8.0+
+### Installation Steps  
 
-### Installation Steps
+**1. Setup the Project:**  
+Copy the `avsar-nepal` folder into your XAMPP `htdocs` directory.
 
-1.  **Download and Setup XAMPP**
+**2. Setup the Database:**  
+- Open phpMyAdmin at `http://localhost/phpmyadmin`  
+- Create a new database named `avsar_nepal`  
+- Import the provided `avsar_nepal.sql` file into this new database to create all the necessary tables and sample data.
 
-    ```bash
-    # Download XAMPP from https://www.apachefriends.org/
-    # Install and start Apache and MySQL services
-    ```
+**3. Configure the Connection (if needed):**  
+The database connection settings are in `includes/db.php`.  
+If your MySQL setup uses a different password (not blank), update the credentials there.
 
-2.  **Deploy Application**
+**4. Set File Permissions:**  
+Ensure the `uploads/` directory and its subfolders (`profile_pics/`, `resumes/`, etc.) have write permissions so users can upload files.
 
-    ```bash
-    # Copy the avsar-nepal folder to your XAMPP htdocs directory
-    cp -r avsar-nepal/ /path/to/xampp/htdocs/
-    ```
+**5. Launch!**  
+- Start Apache and MySQL from your XAMPP control panel.  
+- Open your browser and go to `http://localhost/avsar-nepal/`.
 
-3.  **Database Setup**
+---
 
-    ```bash
-    # Access phpMyAdmin at http://localhost/phpmyadmin
-    # Create a new database named 'avsar_nepal'
-    ```
+## 👥 Test the Platform
 
-    Import the database:
+You can log in and explore the platform using these pre-configured accounts:
 
-    ```sql
-    # In phpMyAdmin: Select 'avsar_nepal' > Import > Choose file > avsar_nepal.sql
-    # Or via command line:
-    mysql -u root -p avsar_nepal < avsar_nepal.sql
-    ```
+**Admin**  
+- Email: `admin@avsar.com`  
+- Password: `admin123`  
+Manages the platform, users, and oversees the premium verification process.
 
-4.  **Configure Database Connection**
+**Employer**  
+- Email: `contact@company.com`  
+- Password: `org123`  
+Can post jobs and, if premium, access the verified talent pool.
 
-    Edit `includes/db.php`:
+**Job Seeker**  
+- Email: `alex.thompson@email.com`  
+- Password: `user123`  
+Can build a profile, get verified, search for jobs, and use the chatbot to find opportunities.
 
-    ```php
-    private $host = 'localhost';
-    private $db_name = 'avsar_nepal';
-    private $username = 'root';
-    private $password = '';  // Your MySQL password
-    ```
+---
 
-5.  **Set File Permissions**
+## 🔒 Our Commitment to Security
 
-    ```bash
-    # Ensure upload directories are writable
-    chmod 755 uploads/
-    chmod 755 uploads/profile_pics/
-    chmod 755 uploads/resumes/
-    chmod 755 uploads/opportunity_files/
-    ```
+We take security seriously. The platform is built with:
 
-6.  **Start the Application**
+- Bcrypt password hashing to keep user credentials safe  
+- CSRF protection on all forms  
+- Prepared SQL statements to prevent injection attacks  
+- Secure file upload validation to restrict file types and sizes  
+- Robust session management  
 
-    Open your browser and navigate to:
-
-    ```
-    http://localhost/avsar-nepal/
-    ```
-
-### PHP Configuration
-
-Ensure these settings in your `php.ini`:
-
-```ini
-file_uploads = On
-upload_max_filesize = 10M
-post_max_size = 10M
-```
-
------
-
-## 👥 Default Login Credentials
-
-### Admin Accounts
-
-  - **Email**: `admin@avsar.com` | **Password**: `admin123`
-  - **Email**: `superadmin@avsar.com` | **Password**: `admin123`
-
-### Employer Accounts
-
-  - **Email**: `contact@company.com` | **Password**: `org123`
-  - **Email**: `hr@techsolutions.com` | **Password**: `org123`
-
-### User (Job Seeker) Accounts
-
-  - **Email**: `alex.thompson@email.com` | **Password**: `user123`
-  - **Email**: `maria.garcia@email.com` | **Password**: `user123`
-  - **Email**: `david.kim@email.com` | **Password**: `user123`
-
------
-
-## 🔧 Configuration
-
-### Customization
-
-#### Colors and Branding
-
-Edit `css/custom.css` to modify:
-
-```css
-:root {
-    --primary-color: #0d6efd;   /* Main brand color */
-    --secondary-color: #6c757d; /* Secondary color */
-}
-```
-
-#### Text Content
-
-  - **Site name**: Edit the navbar brand in `includes/header.php`
-  - **Footer content**: Update `includes/footer.php`
-
------
-
-## 📊 Adding Sample Data
-
-Example SQL for adding a new Employer:
-
-```sql
-INSERT INTO users (name, email, phone, password, role, org_name, contact_person) 
-VALUES ('New Company', 'new@company.com', '+977-9800000000', 
-        '$2y$10$TLLbSGf0qDW3Q7p8OzQxh.LwvSP3OAG3sN7OJbBHrGhGKsKT.WDhG', 
-        'employer', 'New Company Inc', 'Contact Person');
-```
-
------
-
-## 🔒 Security Features
-
-  - **Password Hashing**: bcrypt with salt
-  - **CSRF Protection**: Tokens on all forms
-  - **SQL Injection Prevention**: PDO prepared statements
-  - **File Upload Security**: Type and size validation
-  - **Session Security**: Regeneration and timeout
-  - **Input Sanitization**: Output escaping and validation
-
------
-
-## 🚀 Deployment
-
-### Production Considerations
-
-1.  **Security Hardening**
-    ```php
-    // Add to includes/db.php for production
-    ini_set('display_errors', 0);
-    error_reporting(0);
-    ```
-2.  **Environment Variables**: Move database credentials to a secure `.env` file.
-3.  **Performance Optimization**: Enable PHP OPcache and minify assets.
-
------
+---
 
 ## 📄 License
 
-This project was initially created for a hackathon. All rights go to Team Elite. The main hackathon organizer, 100 X Nepal, can use it for marketing and demonstration purposes.
+This project was originally developed by **Team Elite** for a hackathon.  
+All rights are reserved to the team. The hackathon organizer, **100 X Nepal**, is granted permission to use this project for marketing and demonstration purposes.
 
------
+---
 
-**Avsar Nepal: Connecting Talent with Opportunity.**
-
-*Last updated: November 1, 2025*
+### Avsar Nepal: Empowering Talent, Enabling Growth.  
+_Last Updated: November 2025_
