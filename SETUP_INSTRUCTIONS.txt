@@ -1,0 +1,98 @@
+AVSAR - Login & Signup System Setup Instructions
+================================================
+
+Follow these steps to set up the project:
+
+1. DATABASE SETUP
+   ---------------
+   a. Start XAMPP and make sure Apache and MySQL are running
+   
+   b. Open phpMyAdmin (http://localhost/phpmyadmin)
+   
+   c. Import the database:
+      - Click on "Import" tab
+      - Choose the file "database.sql"
+      - Click "Go" to execute
+      
+   OR manually create the database:
+      - Click "New" to create a database
+      - Name it "avsar_db"
+      - Click on SQL tab and paste the contents of database.sql
+      - Click "Go"
+
+2. DATABASE CONFIGURATION
+   -----------------------
+   The database credentials are set in db_config.php:
+   - Host: localhost
+   - Username: root
+   - Password: (empty)
+   - Database: avsar_db
+   
+   If your MySQL has different credentials, update db_config.php accordingly.
+
+3. FILE STRUCTURE
+   --------------
+   Your files should be in: C:\xampp\htdocs\avsar\
+   
+   Files included:
+   - index.php (Landing page with login/signup options)
+   - login.php (Login page)
+   - signin.php (Signup page with student/employer selection)
+   - student_dashboard.php (Student dashboard)
+   - employer_dashboard.php (Employer dashboard)
+   - logout.php (Logout handler)
+   - db_config.php (Database connection)
+   - database.sql (Database structure)
+
+4. ACCESSING THE APPLICATION
+   --------------------------
+   Open your browser and go to: http://localhost/avsar/
+
+5. TESTING
+   -------
+   a. Sign up as a student:
+      - Click "SIGN UP"
+      - Select "Student"
+      - Fill in the form
+      - Submit
+   
+   b. Sign up as an employer:
+      - Click "SIGN UP"
+      - Select "Employer"
+      - Fill in the form
+      - Submit
+   
+   c. Log in:
+      - After signup, you'll be redirected to login
+      - Enter your credentials
+      - You'll be redirected to your dashboard based on user type
+      - Students go to student_dashboard.php
+      - Employers go to employer_dashboard.php
+
+6. FEATURES
+   --------
+   - User registration with email validation
+   - Password hashing for security
+   - Separate dashboards for students and employers
+   - Session management
+   - Remember me functionality
+   - Responsive dark theme design
+   - Error handling and validation
+
+7. SECURITY NOTES
+   --------------
+   - Passwords are hashed using PHP password_hash()
+   - SQL injection prevention using prepared statements
+   - XSS prevention using htmlspecialchars()
+   - Session-based authentication
+   - Email validation
+
+8. TROUBLESHOOTING
+   ---------------
+   - If you get "Connection failed": Check if MySQL is running in XAMPP
+   - If database doesn't exist: Make sure you imported database.sql
+   - If pages redirect to login: Clear your browser cookies
+   - If styling looks broken: Clear browser cache
+
+Enjoy using AVSAR!
+

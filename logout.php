@@ -1,17 +1,31 @@
 <?php
-require_once 'includes/auth.php';
+require_once 'db_config.php';
 
-// Log the logout activity
-if (isLoggedIn()) {
-    $user = getCurrentUser();
-    $stmt = $pdo->prepare("INSERT INTO activity_logs (user_id, action, description, ip_address) VALUES (?, 'logout', 'User logged out', ?)");
-    $stmt->execute([$user['id'], $_SERVER['REMOTE_ADDR'] ?? '']);
+// Store role before clearing session (to determine redirect)
+$user_role = $_SESSION['role'] ?? null;
+
+// Clear session variables
+$_SESSION = array();
+
+// Destroy session cookie
+if (isset($_COOKIE[session_name()])) {
+    setcookie(session_name(), '', time() - 3600, '/');
 }
 
-// Logout user
-logoutUser();
+// Clear remember me cookie
+if (isset($_COOKIE['remember_token'])) {
+    setcookie('remember_token', '', time() - 3600, '/');
+}
 
-// Redirect to login page with success message
-header("Location: login.php?success=logged_out");
-exit;
+// Destroy session
+session_destroy();
+
+// Redirect based on role - admin goes to login, others to index
+if ($user_role === 'admin') {
+    header("Location: login.php");
+} else {
+    header("Location: index.php");
+}
+exit();
 ?>
+

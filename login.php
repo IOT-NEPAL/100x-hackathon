@@ -1,400 +1,283 @@
 <?php
-require_once 'includes/auth.php';
-
-// Redirect if already logged in
-if (isLoggedIn()) {
-    redirectByRole();
-}
+require_once 'db_config.php';
 
 $error = '';
-$success = '';
+$admin_redirect = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
+    
+    // Check for admin credentials FIRST - skip all other checks
+    $email_normalized = strtolower($email);
+    if ($email_normalized === 'admin@gmail.com' && $password === 'password') {
+        // Set session variables
+        $_SESSION['user_id'] = 0; // Special admin ID
+        $_SESSION['user_name'] = 'Admin';
+        $_SESSION['user_email'] = 'admin@gmail.com';
+        $_SESSION['role'] = 'admin';
+        $_SESSION['org_name'] = null;
+        
+        // Try header redirect first
+        if (!headers_sent()) {
+            header("Location: admin/admin-dashboard.php");
+            exit();
+        } else {
+            // Fallback to JavaScript redirect if headers already sent
+            $admin_redirect = true;
+        }
+    }
+    
+    // Continue with normal login flow for other users
     $remember = isset($_POST['remember']);
     
     if (empty($email) || empty($password)) {
-        $error = 'Please fill in all fields.';
+        $error = 'Please enter both email and password!';
     } else {
-        // Direct admin access bypass (hardcoded for quick demo access)
-        if (($email === 'admin@avsarnepal.com' || $email === 'superadmin@avsarnepal.com') && $password === 'admin123') {
-            // Create a mock admin session without database lookup
-            session_regenerate_id(true);
-            $_SESSION['user_id'] = ($email === 'admin@avsarnepal.com') ? 1 : 2;
-            $_SESSION['login_time'] = time();
+        try {
+            // Get user from database
+            $stmt = $pdo->prepare("SELECT id, name, email, password, role, org_name FROM users WHERE email = ?");
+            $stmt->execute([$email]);
+            $user = $stmt->fetch();
             
-            // Direct redirect to admin dashboard
-            header("Location: /avsarnepal/admin/admin-dashboard.php");
-            exit;
-        }
-        
-        // Regular database authentication for all other users
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ? AND is_active = 1");
-        $stmt->execute([$email]);
-        $user = $stmt->fetch();
-        
-        if ($user && password_verify($password, $user['password'])) {
-            loginUser($user['id'], $remember);
-            
-            // Log activity
-            $stmt = $pdo->prepare("INSERT INTO activity_logs (user_id, action, description, ip_address) VALUES (?, 'login', 'User logged in', ?)");
-            $stmt->execute([$user['id'], $_SERVER['REMOTE_ADDR'] ?? '']);
-            
-            redirectByRole();
-        } else {
-            $error = 'Invalid email or password.';
+            if ($user && password_verify($password, $user['password'])) {
+                // Set session variables
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['user_name'] = $user['name'];
+                $_SESSION['user_email'] = $user['email'];
+                $_SESSION['role'] = $user['role'];
+                $_SESSION['org_name'] = $user['org_name'];
+                
+                // Handle remember me
+                if ($remember) {
+                    $token = bin2hex(random_bytes(32));
+                    $expires = date('Y-m-d H:i:s', strtotime('+30 days'));
+                    
+                    $stmt2 = $pdo->prepare("INSERT INTO sessions (user_id, session_token, expires_at) VALUES (?, ?, ?)");
+                    $stmt2->execute([$user['id'], $token, $expires]);
+                    
+                    setcookie('remember_token', $token, strtotime('+30 days'), '/');
+                }
+                
+                // Redirect to appropriate dashboard based on role
+                if ($user['role'] === 'organizer') {
+                    header("Location: organizer/organizer-dashboard.php");
+                } else {
+                    header("Location: user/user-dashboard.php");
+                }
+                exit();
+            } else {
+                $error = 'Invalid email or password!';
+            }
+        } catch (PDOException $e) {
+            $error = 'Login failed. Please try again.';
         }
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Avsar Nepal</title>
-    <link rel="stylesheet" href="styles.css">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              'avsar-blue': '#1a2f3a',
-              'avsar-gold': '#ccff00',
-              'avsar-green': '#00ff41',
-              'avsar-dark': '#0a0a0a'
-            },
-            fontFamily: {
-              'inter': ['Inter', 'Segoe UI', 'sans-serif']
-            }
-          }
-        }
-      }
-    </script>
-    
-    <!-- Alpine.js -->
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
+    <title>Login - Avsar</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background: #0a0a0a;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000000;
             min-height: 100vh;
-        }
-        
-        .auth-container {
-            min-height: calc(100vh - 80px);
             display: flex;
-            align-items: center;
             justify-content: center;
-            padding: 2rem 1rem;
-            margin-top: 100px; /* Account for fixed navbar */
-        }
-        
-        .auth-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 3rem;
-            max-width: 480px;
-            width: 100%;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-        
-        .auth-title {
-            color: #ffffff;
-            font-size: 2rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 0.5rem;
-        }
-        
-        .auth-subtitle {
-            color: rgba(255, 255, 255, 0.6);
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-label {
-            display: block;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-        
-        .form-input {
-            width: 100%;
-            padding: 0.875rem 1rem;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 10px;
-            color: #ffffff;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .form-input:focus {
-            outline: none;
-            background: rgba(255, 255, 255, 0.12);
-            border-color: #ccff00;
-            box-shadow: 0 0 0 3px rgba(204, 255, 0, 0.1);
-        }
-        
-        .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.4);
-        }
-        
-        .form-checkbox {
-            display: flex;
             align-items: center;
-            gap: 0.5rem;
-            color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
         }
-        
-        .btn-primary {
+
+        .login-container {
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 50px 40px;
+            max-width: 450px;
             width: 100%;
-            padding: 1rem;
-            background: linear-gradient(135deg, #ccff00 0%, #00ff41 100%);
-            color: #0a0a0a;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #a0a0a0;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 14px 16px;
+            background: #f5f5f5;
             border: none;
             border-radius: 10px;
-            font-size: 1.05rem;
-            font-weight: 700;
-            cursor: pointer;
+            font-size: 15px;
+            color: #000000;
+            outline: none;
             transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
         }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(204, 255, 0, 0.4);
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.2);
         }
-        
-        .btn-secondary {
-            width: 100%;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #00ff88;
+        }
+
+        .remember-me label {
+            margin: 0;
+            cursor: pointer;
+            font-size: 14px;
             color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: 600;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #00ff88 0%, #aaff00 100%);
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #000000;
             cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 20px rgba(0, 255, 136, 0.3);
             transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(0, 255, 136, 0.5);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .signup-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #a0a0a0;
             text-decoration: none;
-            display: inline-block;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .signup-link:hover {
+            color: #ffffff;
+        }
+
+        .back-link {
+            display: block;
             text-align: center;
+            margin-top: 15px;
+            color: #a0a0a0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
         }
-        
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.3);
+
+        .back-link:hover {
+            color: #ffffff;
         }
-        
+
         .alert {
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-        
-        .alert-danger {
-            background: rgba(239, 68, 68, 0.15);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            color: #fca5a5;
-        }
-        
-        .alert-success {
-            background: rgba(34, 197, 94, 0.15);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            color: #86efac;
-        }
-        
-        .alert-warning {
-            background: rgba(251, 191, 36, 0.15);
-            border: 1px solid rgba(251, 191, 36, 0.3);
-            color: #fde047;
-        }
-        
-        .divider {
-            margin: 2rem 0;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
             text-align: center;
-            position: relative;
         }
-        
-        .divider::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .divider span {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0 1rem;
-            color: rgba(255, 255, 255, 0.5);
-            position: relative;
-            z-index: 1;
-        }
-        
-        .demo-credentials {
-            background: rgba(204, 255, 0, 0.05);
-            border: 1px solid rgba(204, 255, 0, 0.2);
-            border-radius: 10px;
-            padding: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .demo-credentials h6 {
-            color: #ccff00;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .demo-credentials small {
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.6;
+
+        .alert-error {
+            background: #ff4444;
+            color: #ffffff;
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" x-data="{ mobileMenuOpen: false }">
-        <div class="nav-container">
-            <div class="nav-left">
-                <div class="nav-logo">
-                    <a href="index.php" class="hover:scale-105 transition-transform duration-300">
-                        <img src="logo.png" alt="Avsar Nepal" class="logo-img">
-                    </a>
-                </div>
-                
-                <!-- Desktop Menu -->
-                <ul class="nav-menu hidden md:flex">
-                    <li><a href="students.php" class="hover:text-avsar-green transition-colors duration-300">Students</a></li>
-                    <li><a href="employers.php" class="hover:text-avsar-green transition-colors duration-300">Employers</a></li>
-                    <li><a href="career_centers.php" class="hover:text-avsar-green transition-colors duration-300">Career centers</a></li>
-                </ul>
-            </div>
-            
-            <div class="nav-right">
-                <!-- Mobile Menu Button -->
-                <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-white p-2">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-                
-                <!-- Desktop Buttons -->
-                <div class="nav-buttons hidden md:flex">
-                    <a href="signup.php" class="btn-signup hover:bg-gray-100 transition-colors duration-300" style="text-decoration: none;">Sign up</a>
-                    <a href="login.php" class="btn-login hover:bg-avsar-green/90 transition-colors duration-300" style="text-decoration: none;">Log in</a>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div x-show="mobileMenuOpen" x-transition class="md:hidden bg-avsar-dark border-t border-gray-700">
-            <div class="px-4 py-2 space-y-2">
-                <a href="students.php" class="block py-2 text-white hover:text-avsar-green transition-colors duration-300">Students</a>
-                <a href="employers.php" class="block py-2 text-white hover:text-avsar-green transition-colors duration-300">Employers</a>
-                <a href="career_centers.php" class="block py-2 text-white hover:text-avsar-green transition-colors duration-300">Career centers</a>
-                
-                <div class="pt-4 space-y-2">
-                    <a href="signup.php" class="w-full btn-signup" style="display: block; text-align: center; text-decoration: none;">Sign up</a>
-                    <a href="login.php" class="w-full btn-login" style="display: block; text-align: center; text-decoration: none;">Log in</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <div class="login-container">
+        <h1>Welcome Back</h1>
+        <p class="subtitle">Log in to continue your journey</p>
 
-    <!-- Login Form -->
-    <div class="auth-container">
-        <div class="auth-card">
-            <h1 class="auth-title">Welcome Back</h1>
-            <p class="auth-subtitle">Log in to continue your journey</p>
-                    
-            <?php if ($error): ?>
-                <div class="alert alert-danger">
-                    <?php echo escape($error); ?>
-                </div>
-            <?php endif; ?>
-            
-            <?php if (isset($_GET['success'])): ?>
-                <div class="alert alert-success">
-                    ✓ Registration successful! Please log in.
-                </div>
-            <?php endif; ?>
-            
-            <?php if (isset($_GET['error'])): ?>
-                <?php if ($_GET['error'] === 'session_expired'): ?>
-                    <div class="alert alert-warning">
-                        Your session has expired. Please log in again.
-                    </div>
-                <?php elseif ($_GET['error'] === 'access_denied'): ?>
-                    <div class="alert alert-danger">
-                        Access denied. Please log in with proper permissions.
-                    </div>
-                <?php endif; ?>
-            <?php endif; ?>
-            
-            <form method="POST" action="">
-                <div class="form-group">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input type="email" class="form-input" id="email" name="email" 
-                           placeholder="your.email@example.com"
-                           value="<?php echo escape($_POST['email'] ?? ''); ?>" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-input" id="password" name="password" 
-                           placeholder="Enter your password" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-checkbox">
-                        <input type="checkbox" id="remember" name="remember">
-                        <span>Remember me</span>
-                    </label>
-                </div>
-                
-                <button type="submit" class="btn-primary">
-                    Log In
-                </button>
-            </form>
-            
-            <div class="divider">
-                <span>OR</span>
+        <?php if ($error): ?>
+            <div class="alert alert-error"><?php echo htmlspecialchars($error); ?></div>
+        <?php endif; ?>
+
+        <form action="login.php" method="POST">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="devya@gmail.com" required>
             </div>
-            
-            <a href="signup.php" class="btn-secondary">
-                Create New Account
-            </a>
-            
-            <!-- Demo Credentials -->
-            <div class="demo-credentials">
-                <h6>Demo Credentials:</h6>
-                <small>
-                    <strong>Admin:</strong> admin@avsarnepal.com / admin123<br>
-                    <strong>Organizer:</strong> contact@abilityfoundation.org / org123<br>
-                    <strong>User:</strong> alex.thompson@email.com / user123
-                </small>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="........" required>
             </div>
-        </div>
+
+            <div class="remember-me">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">Remember me</label>
+            </div>
+
+            <button type="submit" class="login-btn">LOG IN</button>
+        </form>
+
+        <a href="signin.php" class="signup-link">Don't have an account? Sign up</a>
+        <a href="index.php" class="back-link">← Back to Home</a>
     </div>
+    
+    <?php if ($admin_redirect): ?>
+    <script>
+        window.location.href = 'admin/admin-dashboard.php';
+    </script>
+    <?php endif; ?>
 </body>
 </html>
+
