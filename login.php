@@ -18,14 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'Please fill in all fields.';
     } else {
         // Direct admin access bypass (hardcoded for quick demo access)
-        if (($email === 'admin@inclusify.com' || $email === 'superadmin@inclusify.com') && $password === 'admin123') {
+        if (($email === 'admin@avsarnepal.com' || $email === 'superadmin@avsarnepal.com') && $password === 'admin123') {
             // Create a mock admin session without database lookup
             session_regenerate_id(true);
-            $_SESSION['user_id'] = ($email === 'admin@inclusify.com') ? 1 : 2;
+            $_SESSION['user_id'] = ($email === 'admin@avsarnepal.com') ? 1 : 2;
             $_SESSION['login_time'] = time();
             
             // Direct redirect to admin dashboard
-            header("Location: /inclusify/admin/admin-dashboard.php");
+            header("Location: /avsarnepal/admin/admin-dashboard.php");
             exit;
         }
         
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Awasar Nepal</title>
+    <title>Login - Avsar Nepal</title>
     <link rel="stylesheet" href="styles.css">
     
     <!-- Tailwind CSS -->
@@ -278,7 +278,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="nav-left">
                 <div class="nav-logo">
                     <a href="index.php" class="hover:scale-105 transition-transform duration-300">
-                        <img src="logo.png" alt="Awasar Nepal" class="logo-img">
+                        <img src="logo.png" alt="Avsar Nepal" class="logo-img">
                     </a>
                 </div>
                 
@@ -324,14 +324,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Login Form -->
     <div class="auth-container">
         <div class="auth-card">
-            <h1 class="auth-title" tabindex="" id="page-title">Welcome Back</h1>
+            <h1 class="auth-title">Welcome Back</h1>
             <p class="auth-subtitle">Log in to continue your journey</p>
-                    <script>
-  window.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('page-title').focus();
-  });
-</script>
-
+                    
             <?php if ($error): ?>
                 <div class="alert alert-danger">
                     <?php echo escape($error); ?>
@@ -394,7 +389,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="demo-credentials">
                 <h6>Demo Credentials:</h6>
                 <small>
-                    <strong>Admin:</strong> admin@inclusify.com / admin123<br>
+                    <strong>Admin:</strong> admin@avsarnepal.com / admin123<br>
                     <strong>Organizer:</strong> contact@abilityfoundation.org / org123<br>
                     <strong>User:</strong> alex.thompson@email.com / user123
                 </small>

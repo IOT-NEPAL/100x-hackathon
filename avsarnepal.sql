@@ -124,8 +124,8 @@ CREATE TABLE user_career_centres (
 
 -- Admin users (passwords: admin123)
 INSERT INTO users (name, email, phone, password, role, created_at) VALUES
-('Admin User', 'admin@inclusify.com', '+1-555-0001', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin', NOW()),
-('Super Admin', 'superadmin@inclusify.com', '+1-555-0002', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin', NOW());
+('Admin User', 'admin@avsarnepal.com', '+1-555-0001', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin', NOW()),
+('Super Admin', 'superadmin@avsarnepal.com', '+1-555-0002', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin', NOW());
 
 -- Organizer users (passwords: org123, except demo organizer password: password)
 INSERT INTO users (name, email, phone, password, role, org_name, contact_person, created_at) VALUES

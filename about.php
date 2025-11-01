@@ -7,7 +7,7 @@ include 'includes/header.php';
     <!-- Hero Section -->
     <section class="hero-section text-center py-5 mb-5">
         <div class="container">
-            <h1 class="display-4 fw-bold mb-4">About Inclusify</h1>
+            <h1 class="display-4 fw-bold mb-4">About Avsar Nepal</h1>
             <p class="lead">Empowering differently-abled individuals through accessible opportunities and inclusive technology</p>
         </div>
     </section>
@@ -19,7 +19,7 @@ include 'includes/header.php';
                 <div class="card-body">
                     <h2 class="mb-4"><i class="fas fa-bullseye me-3"></i>Our Mission</h2>
                     <p class="lead">
-                        Inclusify is dedicated to creating a world where differently-abled individuals have equal access to opportunities for employment, education, and personal growth. We believe that diversity in abilities brings unique perspectives and strengths to every workplace and community.
+                        Avsar Nepal is dedicated to creating a world where differently-abled individuals have equal access to opportunities for employment, education, and personal growth. We believe that diversity in abilities brings unique perspectives and strengths to every workplace and community.
                     </p>
                     <p>
                         Our platform serves as a bridge between talented individuals with diverse abilities and organizations committed to inclusive practices. We're not just a job board – we're a community that celebrates differences and champions accessibility.

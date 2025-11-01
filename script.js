@@ -1,5 +1,5 @@
 /**
- * Main script for Avsar Nepal / Inclusify
+ * Main script for Avsar Nepal
  * Handles common functionality across the application
  */
 
@@ -54,5 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('Avsar Nepal script loaded successfully');
 });
+
 
 

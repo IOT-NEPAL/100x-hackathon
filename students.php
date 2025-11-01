@@ -62,8 +62,8 @@ if ($isLoggedIn) {
                 <!-- Desktop Menu -->
                 <ul class="nav-menu hidden md:flex">
                     <li><a href="students.php" class="text-avsar-green font-semibold">Students</a></li>
-                    <li><a href="employers.php" class="hover:text-avsar-green transition-colors duration-300" onclick="window.location.href='employers.php'">Employers</a></li>
-                    <li><a href="career_centers.php" class="hover:text-avsar-green transition-colors duration-300" onclick="window.location.href='career_centers.php'">Career centers</a></li>
+                    <li><a href="employers.php" class="hover:text-avsar-green transition-colors duration-300">Employers</a></li>
+                    <li><a href="career_centers.php" class="hover:text-avsar-green transition-colors duration-300">Career centers</a></li>
                 </ul>
             </div>
             
@@ -142,8 +142,8 @@ if ($isLoggedIn) {
         <div x-show="mobileMenuOpen" x-transition class="md:hidden bg-avsar-dark border-t border-gray-700">
             <div class="px-4 py-2 space-y-2">
                 <a href="students.php" class="block py-2 text-avsar-green font-semibold">Students</a>
-                <a href="employers.php" class="block py-2 text-white hover:text-avsar-green transition-colors duration-300" onclick="window.location.href='employers.php'">Employers</a>
-                <a href="career_centers.php" class="block py-2 text-white hover:text-avsar-green transition-colors duration-300" onclick="window.location.href='career_centers.php'">Career centers</a>
+                <a href="employers.php" class="block py-2 text-white hover:text-avsar-green transition-colors duration-300">Employers</a>
+                <a href="career_centers.php" class="block py-2 text-white hover:text-avsar-green transition-colors duration-300">Career centers</a>
 
                 <div class="pt-4 space-y-2">
                     <?php if ($isLoggedIn && $user): ?>
@@ -191,16 +191,11 @@ if ($isLoggedIn) {
             <div class="hero-image-container-full">
                 <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920&h=1080&fit=crop" alt="Professional student" class="hero-professional-image">
                 <div class="hero-text-overlay">
-                    <h1 class="hero-main-title" id="page-title" tabindex="-1">
+                    <h1 class="hero-main-title">
                         <span class="title-line">SHOW UP</span>
                         <span class="title-line">GET HIRED</span>
                     </h1>
                 </div>
-                <script>
-  window.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('page-title').focus();
-  });
-</script>
             </div>
         </div>
 

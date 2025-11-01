@@ -1,5 +1,5 @@
 # Bug Fixes & Code Review Report
-## Avsar Nepal / Inclusify Project
+## Avsar Nepal Project
 
 **Date:** October 31, 2025  
 **Review Completed By:** AI Code Auditor
@@ -31,7 +31,7 @@
 #### 4. ✅ Broken Image Path in header.php
 **Issue:** Line 69 referenced `/inclusify/images/logo.png` which doesn't exist  
 **Impact:** Logo wouldn't display for non-logged-in users  
-**Fix:** Changed path to `/inclusify/logo.png`  
+**Fix:** Changed path to `/avsarnepal/logo.png`  
 **Location:** `includes/header.php` (Line 69)
 
 #### 5. ✅ Broken Dashboard Link in profile.php
@@ -52,6 +52,12 @@
 **Fix:** Created API endpoint to return platform statistics  
 **Location:** `api_stats.php` (New file created)
 
+#### 7. ✅ Missing `job_offers` Table in SQL Schema
+**Issue:** Main SQL file missing `job_offers` and `user_career_centres` tables  
+**Impact:** Database setup incomplete, job offers feature wouldn't work  
+**Fix:** Added missing tables from migration files to main `avsarnepal.sql`
+**Location:** `avsarnepal.sql` (Lines 86-119)
+
 ---
 
 ### **MINOR ISSUES (FIXED):**
@@ -68,17 +74,33 @@
 **Fix:** Added closing body and html tags before script section  
 **Location:** `signup.php` (Lines 526-527)
 
+#### 10. ✅ Poor Navigation Bar Usability
+**Issue:** Navigation bar had multiple usability problems:
+- Using `.container` instead of `.container-fluid` causing cramped spacing
+- Too many links cluttering the navbar for student users
+- No visual feedback for active page
+- No profile picture display
+- Brand name inconsistently shown
+**Impact:** Poor user experience, cluttered interface, no visual navigation cues  
+**Fix:** Complete navbar redesign with:
+- Changed to `.container-fluid` for better spacing
+- Reorganized links (students now have Dashboard, Jobs, My Applications + More dropdown)
+- Added profile picture display in navbar
+- Created `css/navbar-fixes.css` with hover effects and animations
+- Added JavaScript to highlight active page
+- Improved dropdown menus with better styling
+**Location:** `includes/header.php` (Lines 52-441), `css/navbar-fixes.css` (New file)
+
 ---
 
 ### **MINOR ISSUES (DOCUMENTED - NO ACTION NEEDED):**
 
-#### 10. ℹ️ Brand Naming Inconsistency
-**Issue:** Mix of "Awasar Nepal" and "Inclusify" throughout codebase  
+#### 11. ℹ️ Brand Naming Inconsistency
+**Issue:** Mix of naming conventions throughout codebase  
 **Impact:** Minor branding confusion  
-**Note:** This appears intentional - "Avsar Nepal" is the public brand name, "Inclusify" is the internal project/database name  
-**No fix applied** - seems to be by design
+**Note:** All references have now been standardized to "Avsar Nepal" and "avsarnepal" for database/project name
 
-#### 11. ℹ️ Dead Footer Links
+#### 12. ℹ️ Dead Footer Links
 **Issue:** Footer links point to "#" anchors  
 **Impact:** Links don't lead anywhere  
 **Note:** Common for template pages - should be updated when actual pages are created  
@@ -100,7 +122,13 @@
    - Returns JSON with user counts, job counts, applications
    - Fallback values if database unavailable
 
-4. **BUG_FIXES_REPORT.md** - This documentation file
+4. **css/navbar-fixes.css** - Navigation bar improvements
+   - Hover effects and transitions
+   - Profile picture styling
+   - Responsive improvements
+   - Active page highlighting
+
+5. **BUG_FIXES_REPORT.md** - This documentation file
 
 ---
 
@@ -170,13 +198,13 @@
 
 ## 📝 SUMMARY
 
-**Total Bugs Found:** 11  
-**Critical Bugs Fixed:** 7  
-**Minor Issues Fixed:** 2  
+**Total Bugs Found:** 13  
+**Critical Bugs Fixed:** 8  
+**Minor Issues Fixed:** 3  
 **Minor Issues Documented:** 2  
 
-**Files Modified:** 6  
-**Files Created:** 4  
+**Files Modified:** 7  
+**Files Created:** 5  
 **Files Deleted:** 0  
 
 ### Overall Code Quality: ⭐⭐⭐⭐☆ (4/5)
@@ -203,6 +231,6 @@ Before deploying to production:
 ---
 
 *Generated on: October 31, 2025*  
-*Project: Avsar Nepal / Inclusify*  
-*Database: inclusify*
+*Project: Avsar Nepal*
+*Database: avsarnepal*
 

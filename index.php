@@ -61,8 +61,7 @@ if ($isLoggedIn) {
         <div class="nav-container">
             <div class="nav-left">
                 <div class="nav-logo">
-                <a href="#main"> jump to main content </a>    
-                <a href="index.php" class="hover:scale-105 transition-transform duration-300">
+                    <a href="index.php" class="hover:scale-105 transition-transform duration-300">
                         <img src="logo.png" alt="Avsar Nepal" class="logo-img">
                     </a>
                 </div>
@@ -248,7 +247,7 @@ if ($isLoggedIn) {
         </div>
 
         <!-- Main Content -->
-        <div class="hero-content" id="main">
+        <div class="hero-content">
             <h1 class="hero-subtitle">Avsar Nepal</h1>
             <h2 class="hero-title">
                 Careers<br>
@@ -693,7 +692,7 @@ if ($isLoggedIn) {
             <div class="footer-top">
                 <div class="footer-column">
                     <div class="footer-logo">
-                        <img src="/inclusify/logo.png" alt="Avsar Nepal" class="logo-img">
+                        <img src="/avsarnepal/logo.png" alt="Avsar Nepal" class="logo-img">
                         <span class="footer-brand">Avsar Nepal</span>
                     </div>
                     <p class="footer-tagline">Connecting talent with opportunity across Nepal</p>

@@ -234,7 +234,19 @@ include 'includes/header.php';
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fas fa-save me-2"></i>Update Profile
                                 </button>
-                                <a href="<?php echo $user['role']; ?>/<?php echo $user['role']; ?>-dashboard.php" 
+                                <?php
+                                $cancel_link = '/avsarnepal/index.php';
+                                if ($user['role'] === 'user') {
+                                    $cancel_link = '/avsarnepal/user/user-dashboard.php';
+                                } elseif ($user['role'] === 'organizer') {
+                                    $cancel_link = '/avsarnepal/organizer/organizer-dashboard.php';
+                                } elseif ($user['role'] === 'admin') {
+                                    $cancel_link = '/avsarnepal/admin/admin-dashboard.php';
+                                } elseif ($user['role'] === 'career_centre') {
+                                    $cancel_link = '/avsarnepal/career_centre/career-centre-dashboard.php';
+                                }
+                                ?>
+                                <a href="<?php echo $cancel_link; ?>" 
                                    class="btn btn-outline-secondary ms-2">
                                     <i class="fas fa-times me-2"></i>Cancel
                                 </a>

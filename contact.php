@@ -110,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     
                     <div class="mb-3">
                         <h6><i class="fas fa-envelope me-2"></i>Email</h6>
-                        <p class="text-muted">support@inclusify.com</p>
+                        <p class="text-muted">support@avsarnepal.com</p>
                     </div>
                     
                     <div class="mb-3">
@@ -132,12 +132,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="accordion-item">
                             <h6 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                                    Is Inclusify free to use?
+                                    Is Avsar Nepal free to use?
                                 </button>
                             </h6>
                             <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
-                                    Yes! Inclusify is completely free for job seekers. Organizations pay a small fee to post opportunities.
+                                    Yes! Avsar Nepal is completely free for job seekers. Organizations pay a small fee to post opportunities.
                                 </div>
                             </div>
                         </div>

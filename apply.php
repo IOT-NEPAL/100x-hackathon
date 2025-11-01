@@ -119,14 +119,9 @@ include 'includes/header.php';
         <div class="col-lg-8">
             <div class="card shadow">
                 <div class="card-header">
-                    <h3 class="mb-0" id="page-title" tabindex="-1">
+                    <h3 class="mb-0">
                         <i class="fas fa-paper-plane me-2"></i>Apply for Opportunity
                     </h3>
-                    <script>
-  window.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('page-title').focus();
-  });
-</script>
                 </div>
                 <div class="card-body">
                     <?php if ($error): ?>
@@ -216,7 +211,14 @@ include 'includes/header.php';
                                     </div>
                                 <?php endif; ?>
                                 
-                                                                <div class="text-center">
+                                <?php if ($user['disability_text']): ?>
+                                    <div class="mb-2">
+                                        <strong>Accessibility Information:</strong>
+                                        <p class="text-muted small"><?php echo nl2br(escape($user['disability_text'])); ?></p>
+                                    </div>
+                                <?php endif; ?>
+                                
+                                <div class="text-center">
                                     <a href="profile.php" class="btn btn-sm btn-outline-primary">
                                         <i class="fas fa-edit me-1"></i>Update Profile
                                     </a>
@@ -291,7 +293,7 @@ include 'includes/header.php';
                         Having trouble with your application? Our support team is here to help.
                     </p>
                     <div class="d-grid">
-                        <a href="mailto:support@inclusify.com?subject=Application Help" 
+                        <a href="mailto:support@avsarnepal.com?subject=Application Help" 
                            class="btn btn-sm btn-outline-info">
                             <i class="fas fa-envelope me-1"></i>Contact Support
                         </a>
@@ -305,6 +307,8 @@ include 'includes/header.php';
 <?php
 function getTypeColor($type) {
     $colors = [
+        'employment' => 'primary',
+        'internship' => 'info',
         'job' => 'primary',
         'scholarship' => 'success',
         'training' => 'info',

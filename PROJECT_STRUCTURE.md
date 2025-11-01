@@ -3,7 +3,7 @@
 ## Directory Organization
 
 ```
-inclusify/
+avsarnepal/
 ├── admin/                  # Admin dashboard and management pages
 ├── career_centre/          # Career centre dashboard
 ├── css/                    # All CSS files
@@ -41,27 +41,27 @@ inclusify/
 ├── profile.php             # User profile page
 ├── styles.css              # Main stylesheet
 ├── logo.png                # Site logo
-└── inclusify.sql           # Database schema
+└── avsarnepal.sql         # Database schema
 
 ```
 
 ## Cleanup Summary
 
 ### Files Removed:
--  `index_backup.php` - Backup file
--  `fix-passwords.php` - Temporary utility script
--  `database-update.php` - Temporary database update script
--  `export-data.php` - Temporary export script
--  `inclusify/` subdirectory - Duplicate directory removed
+- ✅ `index_backup.php` - Backup file
+- ✅ `fix-passwords.php` - Temporary utility script
+- ✅ `database-update.php` - Temporary database update script
+- ✅ `export-data.php` - Temporary export script
+- ✅ `avsarnepal/` subdirectory - Duplicate directory removed
 
 ### Files Organized:
--  CSS files moved to `css/` directory
--  Migration SQL files moved to `migrations/` directory
--  Updated CSS paths in PHP files to reflect new structure
+- ✅ CSS files moved to `css/` directory
+- ✅ Migration SQL files moved to `migrations/` directory
+- ✅ Updated CSS paths in PHP files to reflect new structure
 
 ### Navigation Updates:
--  Removed "Scholarships" link from header (content was removed earlier)
--  Changed "Opportunities" to "Jobs" in navigation
+- ✅ Removed "Scholarships" link from header (content was removed earlier)
+- ✅ Changed "Opportunities" to "Jobs" in navigation
 
 ## File Organization Rules
 
@@ -81,6 +81,6 @@ inclusify/
 
 - The main stylesheet `styles.css` remains in the root for easier access
 - All page-specific stylesheets are organized in the `css/` folder
-- Database schema file `inclusify.sql` remains in root for easy access
+- Database schema file `avsarnepal.sql` remains in root for easy access
 - All temporary/utility scripts have been removed
 

@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - Awasar Nepal</title>
+    <title>Sign Up - Avsar Nepal</title>
     <link rel="stylesheet" href="styles.css">
     
     <!-- Tailwind CSS -->
@@ -352,7 +352,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="nav-left">
                 <div class="nav-logo">
                     <a href="index.php" class="hover:scale-105 transition-transform duration-300">
-                        <img src="logo.png" alt="Awasar Nepal" class="logo-img">
+                        <img src="logo.png" alt="Avsar Nepal" class="logo-img">
                     </a>
                 </div>
                 
@@ -398,12 +398,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Signup Form -->
     <div class="auth-container">
         <div class="auth-card">
-            <h1 tabindex="-1" class="auth-title" id="page-title">Create Account</h1>
-            <script>
-  window.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('page-title').focus();
-  });
-</script>
+            <h1 class="auth-title">Create Account</h1>
             <p class="auth-subtitle">Connect with jobs tailored for students and fresh graduates in Nepal</p>
                     
             <?php if ($error): ?>
@@ -528,6 +523,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 
+</body>
+</html>
+
 <script>
 // Toggle role-specific fields
 document.addEventListener('DOMContentLoaded', function() {
@@ -582,5 +580,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
-
-<?php include 'includes/footer.php'; ?>
