@@ -18,14 +18,14 @@
 - **Application Tracking** - Monitor all job applications
 - **Job Offers** - Receive and respond to direct offers
 - **Real-time Notifications** - Stay updated on opportunities
-
+- ** online payment system ** added khalti payment gateway to adhere to our main subscription model.
 ### 💼 For Employers
 - **Post Opportunities** - Create employment and internship listings
 - **Application Management** - Review, filter, and track applicants
 - **Send Job Offers** - Direct offers to promising candidates
 - **Analytics Dashboard** - Track views, applications, and performance
 - **Candidate Discovery** - Find students with matching skills
-
+- ** get highly skilled employees **
 ### 🤖 AI-Powered
 - **Context-Aware Chatbot** - Knows user skills and available jobs
 - **Job Recommendations** - Automatic extraction from AI responses
